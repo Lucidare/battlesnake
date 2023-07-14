@@ -1,3 +1,7 @@
 *.DS_Store
 *.pyc
 __pycache__/
+battlesnake-test-suite
+battlesnake_1.2.3_Windows_x86_64.tar
+battlesnake_1.2.3_Windows_x86_64.tar.gz
+battlesnake_visualizer
