@@ -13,7 +13,7 @@
 import random
 import typing
 import server_logic
-
+import argparse
 
 # info is called when you create your Battlesnake on play.battlesnake.com
 # and controls your Battlesnake's appearance
@@ -49,7 +49,19 @@ def move(game_state: typing.Dict) -> typing.Dict:
 
 
 # Start server when `python main.py` is run
+# python your_battlesnake_server.py --port 8001
+# If you don't specify the --port argument, the server will default to port 8000.
 if __name__ == "__main__":
     from server import run_server
+    parser = argparse.ArgumentParser(description="Battlesnake server")
+    parser.add_argument("--port", type=int, default=8000, help="Port number for the Battlesnake server")
+    args = parser.parse_args()
 
-    run_server({"info": info, "start": start, "move": move, "end": end})
+
+    handlers = {
+        "info": info,
+        "start": start,
+        "move": move,
+        "end": end,
+    }
+    run_server(handlers, args.port)
