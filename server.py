@@ -1,7 +1,7 @@
 import logging
 import os
 import typing
-from flask import Flask, request
+from flask import Flask, request, jsonify
 
 
 def run_server(handlers: typing.Dict, port: int):
@@ -18,9 +18,10 @@ def run_server(handlers: typing.Dict, port: int):
         return "ok"
 
     @app.post("/move")
-    def on_move():
+    async def on_move():
         game_state = request.get_json()
-        return handlers["move"](game_state)
+        response = await handlers["move"](game_state)  # Await the handlers["move"] function
+        return jsonify(response)
 
     @app.post("/end")
     def on_end():

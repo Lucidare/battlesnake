@@ -1,2 +1,2 @@
-Flask==2.3.2
+Flask[async]==2.3.2
 scipy==1.11.1

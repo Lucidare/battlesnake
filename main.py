@@ -42,8 +42,8 @@ def end(game_state: typing.Dict):
 # move is called on every turn and returns your next move
 # Valid moves are "up", "down", "left", or "right"
 # See https://docs.battlesnake.com/api/example-move for available data
-def move(game_state: typing.Dict) -> typing.Dict:
-    next_move = server_logic.choose_move(game_state)
+async def move(game_state: typing.Dict) -> typing.Dict:
+    next_move = await server_logic.choose_move(game_state)
     return {"move": next_move}
 
 
